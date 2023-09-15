@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_ClientLayout";
+}
+
+@model List<RequestsWithCompanyName>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Talep Numarası</th>
+            <th scope="col">Oluşturulma Tarihi (statik)</th>
+            <th scope="col">Şirket Adı</th>
+            <th scope="col">Taşınma Tarihi</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <th scope="row">@req.Id</th>
+                <td>01.01.2023 11.22</td>
+                <td>@req.CompanyName</td>
+                <td>@req.TransportDate.ToShortDateString()</td>
+                <td>
+                    <a asp-controller="Client" asp-action="EditRequest" asp-route-requestId="@req.Id" class="btn-sm btn-success">Güncelle</a>
+                    <a asp-controller="Client" asp-action="CancelRequest" asp-route-requestId="@req.Id" class="btn-sm btn-danger">İptal Et</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "_ClientLayout";
+    ViewBag.Title = "Talep Oluştur";
+}
+
+@model CreateRequestViewModel
+
+<h3>Talep Oluştur</h3>
+
+<div class="container w-50">
+    <form method="post" asp-controller="Request" asp-action="CreateRequest">
+        <div asp-validation-summary="ModelOnly" id="errMsg" style="color:white;font-weight:500;background-color:red;border-radius:5px;">
+            @ViewBag.Message
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" asp-for="UserId" value="@ViewBag.UserId">
+            <input type="hidden" class="form-control" asp-for="CompanyId" value="@ViewBag.CompanyDetails.Id">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="@ViewBag.CompanyDetails.Name" disabled>
+        </div>
+        <div class="form-group">
+            <input type="date" asp-for="TransportDate" class="form-control" placeholder="TransportDate">
+            <span class="text-danger" asp-validation-for="TransportDate"></span>
+        </div>
+        <div class="form-group">
+            <label for="fromAddress">FromAddress</label>
+            <textarea class="form-control" id="fromAddress" asp-for="FromAdress"></textarea>
+            <span class="text-danger" asp-validation-for="FromAdress"></span>
+        </div>
+        <div class="form-group">
+            <label for="fromFloor">FromFloor</label>
+            <input type="number" class="form-control" id="fromFloor" asp-for="FromFloor">
+            <span class="text-danger" asp-validation-for="FromFloor"></span>
+        </div>
+        <div class="form-group">
+            <label for="toAddress">ToAddress</label>
+            <textarea class="form-control" id="toAddress" asp-for="ToAdress"></textarea>
+            <span class="text-danger" asp-validation-for="ToAdress"></span>
+        </div>
+        <div class="form-group">
+            <label for="toFloor">ToFloor</label>
+            <input type="number" class="form-control" id="toFloor" asp-for="ToFloor">
+            <span class="text-danger" asp-validation-for="ToFloor"></span>
+        </div>
+        <div class="form-group">
+            <label for="requestTypeId">RequestType</label>
+            <select asp-for="RequestTypeId" asp-items="@ViewBag.RequestTypes" class="custom-select">
+            </select>
+            <span class="text-danger" asp-validation-for="RequestTypeId"></span>
+        </div>
+        <div class="form-group">
+            <label for="extraMessage">ExtraMessage</label>
+            <textarea class="form-control" id="extraMessage" asp-for="ExtraMessage"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Talep Oluştur</button>
+    </form>
+</div>

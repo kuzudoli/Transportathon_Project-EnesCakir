@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_AuthLayout";
+    ViewBag.Title = "Kayıt Ol";
+}
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+    @model SignUpViewModel
+    <form method="post" asp-controller="Auth" asp-action="SignUp">
+        <div asp-validation-summary="ModelOnly" id="errMsg" style="color:white;font-weight:500;background-color:red;border-radius:5px;">
+            @ViewBag.Message
+        </div>
+        <div class="form-group">
+            <label for="name">İsim</label>
+            <input type="text" class="form-control" id="name" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label for="surname">Soyisim</label>
+            <input type="text" class="form-control" id="surname" asp-for="Surname">
+            <span class="text-danger" asp-validation-for="Surname"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" class="form-control" id="phone" asp-for="Phone">
+            <span class="text-danger" asp-validation-for="Phone"></span>
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Doğum Tarihi</label>
+            <input type="date" class="form-control" id="birthdate" asp-for="BirthDate">
+            <span class="text-danger" asp-validation-for="BirthDate"></span>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="isCompany" asp-for="IsCompany">
+            <label class="form-check-label" for="isCompany">Şirket hesabı mı?</label>
+            <span class="text-danger" asp-validation-for="IsCompany"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Şifre</label>
+            <input type="password" class="form-control" id="password" asp-for="Password">
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label for="passwordConfirm">Şifre Onay</label>
+            <input type="password" class="form-control" id="passwordConfirm" asp-for="PasswordConfirm">
+            <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+    </form>
